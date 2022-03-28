@@ -2,12 +2,6 @@ import string
 import re
 import json
 import urllib.request
-import pandas as pd
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
 import time
 import os
 import os.path
@@ -73,41 +67,41 @@ def main():
             time.sleep(10)
             where = 1
 
-    #sections = obj['sections']
-    #for section in sections:
-    #    all_section_items = section["items"]
-    #    for item in all_section_items:
-    #        rest_title = safeAtrr(item, "title") #needed as is
-    #        more_details = safeAtrr(item, "venue")
+    sections = obj['sections']
+    for section in sections:
+        all_section_items = section["items"]
+        for item in all_section_items:
+            rest_title = safeAtrr(item, "title") #needed as is
+            more_details = safeAtrr(item, "venue")
 
-    #        rest_address = safeAtrr(more_details, "address") #needed as is
-    #        rest_city = safeAtrr(more_details, "city") #needed as is
-    #        rest_currency = safeAtrr(more_details, "currency") #needed as is
-            #rest_isDelivering = safeAtrr(more_details, "delivers")
-            #rest_delivery_price = safeAtrr(more_details, "delivery_price")
-            #rest_estimate = safeAtrr(more_details, "estimate") #needed as is
-            #rest_estimate_range = safeAtrr(more_details, "estimate_range") #needed as is
-    #        rest_location = safeAtrr(more_details, "location") #needed as is
-    #        rest_name = safeAtrr(more_details, "name") #needed as is
-    #        rest_short_description = safeAtrr(more_details, "short_description") #needed as is
-    #        rest_slug = safeAtrr(more_details, "slug")
-    #        rest_tags = safeAtrr(more_details, "tags")
+            rest_address = safeAtrr(more_details, "address") #needed as is
+            rest_city = safeAtrr(more_details, "city") #needed as is
+            rest_currency = safeAtrr(more_details, "currency") #needed as is
+            rest_isDelivering = safeAtrr(more_details, "delivers")
+            rest_delivery_price = safeAtrr(more_details, "delivery_price")
+            rest_estimate = safeAtrr(more_details, "estimate") #needed as is
+            rest_estimate_range = safeAtrr(more_details, "estimate_range") #needed as is
+            rest_location = safeAtrr(more_details, "location") #needed as is
+            rest_name = safeAtrr(more_details, "name") #needed as is
+            rest_short_description = safeAtrr(more_details, "short_description") #needed as is
+            rest_slug = safeAtrr(more_details, "slug")
+            rest_tags = safeAtrr(more_details, "tags")
 
             # download raw json object
-            #for cat in categories_names:
+            for cat in categories_names:
 
-    #        url = "https://restaurant-api.wolt.com/v3/venues/slug/" + rest_slug
-    #        data = urllib.request.urlopen(url).read().decode()
+                url = "https://restaurant-api.wolt.com/v3/venues/slug/" + rest_slug
+                data = urllib.request.urlopen(url).read().decode()
 
-            # parse json object
-    #        obj = json.loads(data)
-    #        my_results = safeAtrr(obj, "results")
-    #        relevant_result = my_results[0]
-    #        item_delivery_enabled = safeAtrr(relevant_result, "delivery_enabled")
-    #        print(obj)
-    #        break
-    #f = open("burgers.txt", "r")
-    #print(json.loads(f.read())["show_map"])
+                # parse json object
+                obj = json.loads(data)
+                my_results = safeAtrr(obj, "results")
+                relevant_result = my_results[0]
+                item_delivery_enabled = safeAtrr(relevant_result, "delivery_enabled")
+                print(obj)
+                break
+    f = open("burgers.txt", "r")
+    print(json.loads(f.read())["show_map"])
 
 
 
